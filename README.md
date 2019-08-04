@@ -35,7 +35,7 @@ public static async Task<TResult> Execute<TResult, T>(this ResolveFieldContext<T
     return default(TResult);
 }
         
-```csharp
+```
 
 ## Usage
 Copy GraphQLExt.cs to your project
