@@ -1,7 +1,7 @@
 # GraphQL.Net-Extensions
 Extensions for GraphQL .Net
 
-## Extension method for catch exceptions in one place:
+## GraphQL Extension method for catch exceptions in one place:
 
 ```csharp
 public static async Task<TResult> Execute<TResult, T>(this ResolveFieldContext<T> context,
