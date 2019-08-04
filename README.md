@@ -1,7 +1,41 @@
 # GraphQL.Net-Extensions
 Extensions for GraphQL .Net
 
-Extension method for catch exceptions in one place.
+## Extension method for catch exceptions in one place:
+
+```csharp
+public static async Task<TResult> Execute<TResult, T>(this ResolveFieldContext<T> context,
+    Func<ResolveFieldContext<T>, Task<TResult>> func)
+{
+    try
+    {
+        return await func(context);
+    }
+    catch (ArgumentNullException ex)
+    {
+        //TODO Log
+        context.Errors.Add(new ExecutionError(ex.Message) { Code = "500" });
+    }
+    catch (ArgumentException ex)
+    {
+        //TODO Log
+        context.Errors.Add(new ExecutionError(ex.Message) { Code = "500" });
+    }
+    catch (NullReferenceException ex)
+    {
+        //TODO Log
+        context.Errors.Add(new ExecutionError(ex.Message) { Code = "500" });
+    }
+    catch (Exception ex)
+    {
+        //TODO Log
+        context.Errors.Add(new ExecutionError(ex.Message) { Code = "500" });
+    }
+
+    return default(TResult);
+}
+        
+```csharp
 
 ## Usage
 Copy GraphQLExt.cs to your project
@@ -37,7 +71,7 @@ private async Task<List<MockModel>> GetData(ResolveFieldContext<object> context)
 }
 ```
 
-by this, for catch exceptions in one place.
+by calling extension method Execute.
 
 ```csharp
 Field<ListGraphType<MockType>>(
