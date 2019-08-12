@@ -39,7 +39,7 @@ public static async Task<TResult> Execute<TResult, T>(this ResolveFieldContext<T
 
 ## Usage
 Copy GraphQLExt.cs to your project
-and then you can change, for example:
+and you can change this:
 
 ```csharp
 Field<ListGraphType<MockType>>(
@@ -71,7 +71,7 @@ private async Task<List<MockModel>> GetData(ResolveFieldContext<object> context)
 }
 ```
 
-by calling extension method Execute.
+by this:
 
 ```csharp
 Field<ListGraphType<MockType>>(
