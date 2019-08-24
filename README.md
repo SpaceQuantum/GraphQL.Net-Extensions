@@ -39,7 +39,7 @@ public static async Task<TResult> Execute<TResult, T>(this ResolveFieldContext<T
 
 ## Usage
 Copy GraphQLExt.cs to your project
-and you can change this:
+and you can change this code in Query class:
 
 ```csharp
 Field<ListGraphType<MockType>>(
